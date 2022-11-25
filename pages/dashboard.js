@@ -60,6 +60,9 @@ export default function Dashboard(props) {
 	const dispatch = useDispatch();
 	const auth = useSelector((state) => state.auth);
 
+	/* If user is not registered.
+	** redirect to register page */
+
 	useEffect(() => {
 		const user = JSON.parse(localStorage.getItem("user"));
 		if (!user) {
@@ -69,6 +72,9 @@ export default function Dashboard(props) {
 		}
 	}, []);
 
+	/* useEffect
+	** Fetch User list */
+
 	useEffect(() => {
 		axios.get(API_ENDPOINT)
 			.then(res => {
@@ -76,6 +82,9 @@ export default function Dashboard(props) {
 			})
 	}, []);
 
+	/* For Mobile Responsive
+	** Detect width */
+	
 	useEffect(() => {
 		const media = window.matchMedia('(min-width: 950px)');
 		if (media.matches !== matches) {
